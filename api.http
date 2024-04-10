@@ -1,0 +1,50 @@
+# @name createEvent
+
+POST http://localhost:3333/events
+Content-Type: application/json
+
+{
+  "title": "New Event",
+  "details": "Um evento para quem é apaixonado por programação",
+  "maximumAttendees": 1
+}
+
+###
+
+@eventId = da33d110-05b1-46ed-8d10-038fab6f4d13
+
+# @name createAttendee
+
+POST http://localhost:3333/events/{{eventId}}/attendees
+Content-Type: application/json
+
+{
+  "name": "Mikasa Ackerman",
+  "email": "mikasa.ackerman@email.com"
+}
+
+###
+
+# @name getAttendees
+
+GET http://localhost:3333/events/{{eventId}}/attendees?query=
+
+###
+
+# @name getEvent
+
+GET http://localhost:3333/events/{{eventId}}
+
+###
+
+@attendeeId = 1
+
+# @name getEvent
+
+GET http://localhost:3333/attendees/{{attendeeId}}/badge
+
+###
+
+# @name checkIn
+
+GET http://localhost:3333/attendees/{{attendeeId}}/check-in
